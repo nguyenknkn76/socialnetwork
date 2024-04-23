@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 const LoginPage = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState({})
     const [errorMessage, setErrorMessage] = useState(null)
     const [option, setOption] = useState(null)
     const [users, setUsers] = useState([])
