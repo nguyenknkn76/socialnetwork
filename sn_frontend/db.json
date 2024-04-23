@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "nguyen",
+      "password": "0123456",
+      "name": "nguyen-name",
+      "email": "nguyen@"
+    },
+    {
+      "id": "2",
+      "username": "minh",
+      "password": "0123456",
+      "name": "minh-name",
+      "email": "minh@"
+    },
+    {
+      "id": "3",
+      "username": "linh",
+      "password": "0123456",
+      "name": "linh-name",
+      "email": "linh@"
+    }
+  ]
+}
