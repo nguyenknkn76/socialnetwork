@@ -39,32 +39,36 @@ const LoginPage = () => {
             })
     }
     return(
-        <div>
-            <p>{user === null ? null : `${user.name} logged in`} </p>
-            <button onClick={()=> setOption('login')}>login</button>
-            <button onClick={() => setOption('register')}>register</button>
-            <button onClick={() => setUser(null)}>logout</button>
-            <div>
-                <LoginForm 
-                    handleLogin = {handleLogin} 
-                    username = {username} 
-                    password = {password} 
-                    usernameOnChange = {({target}) => {setUsername(target.value)}}
-                    passwordOnChange = {({target}) => {setPassword(target.value)}}
-                /> 
-            </div>
-            
-            <div>
-                <h2>user list</h2>
-                <div>
-                <ul>
-                {users.map(user => 
-                    <li key = {user.id}>{user.name}</li>
-                )}
-                </ul>
+        <div className="container mt-5">
+            <div className="row">
+                <div className="col-md-6">
+                    <div className="card">
+                        <div className="card-body">
+                            {/* <h5 className="card-title">Login</h5> */}
+                            <LoginForm
+                                handleLogin={handleLogin}
+                                username={username}
+                                password={password}
+                                usernameOnChange={({ target }) => { setUsername(target.value) }}
+                                passwordOnChange={({ target }) => { setPassword(target.value) }}
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-6">
+                    <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">User List</h5>
+                            <ul className="list-group">
+                                {users.map(user =>
+                                    <li className="list-group-item" key={user.id}>{user.name}</li>
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     )
 }
 export default LoginPage

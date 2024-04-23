@@ -1,6 +1,7 @@
 import RegisterForm from "../components/RegisterForm"
 import { useState, useEffect } from "react"
 import userService from "../services/UserService"
+import 'bootstrap/dist/css/bootstrap.min.css'
 const RegisterPage = () => {
     const [newusername, setNewUsername] = useState('')
     const [newpassword, setNewPassword] = useState('')
@@ -34,28 +35,42 @@ const RegisterPage = () => {
             })
     }
     return(
-        <div>
-
-            <RegisterForm 
-                handleRegister = {handleRegister}
-                username = {newusername} 
-                password = {newpassword} 
-                name = {name}
-                email = {email}
-                usernameOnChange = {({target}) => {setNewUsername(target.value)}}
-                passwordOnChange = {({target}) => {setNewPassword(target.value)}}
-                nameOnChange = {({target}) => {setName(target.value)}}
-                emailOnChange = {({target}) => {setEmail(target.value)}}
-            />
-            <div>
-                <h2>user list</h2>
-                <ul>
-                    {users.map(user => 
-                        <li key = {user.id}>{user.id} : {user.name}</li>
-                    )}
-                </ul>
+        <div className="container mt-5">
+      <div className="row">
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              {/* <h5 className="card-title">Register</h5> */}
+              <RegisterForm
+                handleRegister={handleRegister}
+                username={newusername}
+                password={newpassword}
+                name={name}
+                email={email}
+                usernameOnChange={({ target }) => { setNewUsername(target.value) }}
+                passwordOnChange={({ target }) => { setNewPassword(target.value) }}
+                nameOnChange={({ target }) => { setName(target.value) }}
+                emailOnChange={({ target }) => { setEmail(target.value) }}
+              />
             </div>
+          </div>
         </div>
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">User List</h5>
+              <ul className="list-group">
+                {users.map(user =>
+                  <li className="list-group-item" key={user.id}>
+                    ID: {user.id}, Name: {user.name}
+                  </li>
+                )}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     )
 }
 export default RegisterPage
