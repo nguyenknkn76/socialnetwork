@@ -1,11 +1,20 @@
+###! TEST FOR API/USERS
 GET http://localhost:3001/api/users
 ###
-GET http://localhost:3001/api/users/1
-###
-POST http://localhost:3001/api/login
+POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "username": "nguyen",
-    "password": "0123456"
+    "username": "long",
+    "name": "long",
+    "password": "123456"
+}
+
+###! TEST FOR API/LOGIN
+POST  http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username":"long",
+    "password":"123456"
 }
