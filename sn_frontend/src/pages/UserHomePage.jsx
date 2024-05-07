@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 const UserHomePage = () => {
     const { id } = useParams()
     const [user, setUser] = useState(null)
-    
+    const navigate = useNavigate()
     // useEffect(() => {
     //     userService
     //         .getById(id)
@@ -14,15 +14,22 @@ const UserHomePage = () => {
     //             console.log(user)
     //     })
     // },[])
-    useEffect(()=> {
+    useEffect(() => {
         const loggedUserJSON = window.localStorage.getItem('loggedSocialNetworkUser')
         const user = JSON.parse(loggedUserJSON)
+        console.log(user)
         setUser(user)
     },[])
-    
+
+    const handleLogout = () => {
+        setUser(null)
+        window.localStorage.removeItem('loggedNoteAppUser')
+        navigate('/login')
+    }
     return(
         <div>
             <p>{user === null ? null : `${user.name} logged in`}</p>
+            <button onClick={handleLogout}>logout</button>
         </div>
     )
 }
