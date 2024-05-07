@@ -7,6 +7,7 @@ import LoginForm from "../components/LoginForm"
 import RegisterForm from "../components/RegisterForm";
 import { useNavigate } from 'react-router-dom'
 import LoginService from "../services/LoginService";
+import './LoginPage.css'
 
 const LoginPage = () => {
     const [username, setUsername] = useState('')
@@ -20,14 +21,15 @@ const LoginPage = () => {
     
     const handleLogin = async (event) => {
         event.preventDefault()
+        console.log('try login')
         const user = await LoginService.login({username, password})
         window.localStorage.setItem('loggedSocialNetworkUser', JSON.stringify(user))
-
         console.log(user)
         setUser(user)
         setUsername('')
         setPassword('')
-        navigate(`/userhomepage/${user.id}`)
+        
+        // navigate(`/userhomepage/${user.id}`)
     }
     return(
         <div>
