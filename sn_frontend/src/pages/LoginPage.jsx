@@ -28,8 +28,7 @@ const LoginPage = () => {
         setUser(user)
         setUsername('')
         setPassword('')
-        
-        // navigate(`/userhomepage/${user.id}`)
+        navigate(`/userhomepage/${user.id}`)
     }
     return(
         <div>
