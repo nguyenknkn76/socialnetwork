@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom'
 import userService from '../services/UserService';
 import { useState, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom'
 const UserHomePage = () => {
     const { id } = useParams()
     const [user, setUser] = useState(null)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     // useEffect(() => {
     //     userService
     //         .getById(id)
@@ -24,11 +24,10 @@ const UserHomePage = () => {
     const handleLogout = () => {
         setUser(null)
         window.localStorage.removeItem('loggedNoteAppUser')
-        navigate('/login')
     }
     return(
         <div>
-            <p>{user === null ? null : `${user.name} logged in`}</p>
+            <p>{user === null ? `nothing or logout` : `${user.name} logged in`}</p>
             <button onClick={handleLogout}>logout</button>
         </div>
     )
