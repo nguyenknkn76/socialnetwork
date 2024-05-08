@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import userService from "../services/UserService";
+import userService from "../../services/UserService";
 import axios from "axios"
 // import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import LoginForm from "../components/LoginForm"
-import RegisterForm from "../components/RegisterForm";
+import LoginForm from "../../components/LoginForm"
+import RegisterForm from "../../components/RegisterForm";
 import { useNavigate } from 'react-router-dom'
-import LoginService from "../services/LoginService";
+import LoginService from "../../services/LoginService";
 import './LoginPage.css'
 
 const LoginPage = () => {

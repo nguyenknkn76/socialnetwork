@@ -3,10 +3,10 @@ import userService from "./services/UserService";
 import axios from "axios"
 // import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import UserHomePage from './pages/UserHomePage'
-import RegisterPage from "./pages/RegisterPage"
-import LoginPage from "./pages/LoginPage"
+import HomePage from './pages/HomePage/HomePage'
+import UserHomePage from './pages/UserHomePage/UserHomePage'
+import RegisterPage from "./pages/RegisterPage/RegisterPage"
+import LoginPage from "./pages/LoginPage/LoginPage"
 
 const App = () => {
   return (
