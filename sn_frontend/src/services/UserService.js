@@ -12,4 +12,6 @@ const getById = async (id) => {
     return res.data
 }
 
+
+
 export default {getAll, getById}

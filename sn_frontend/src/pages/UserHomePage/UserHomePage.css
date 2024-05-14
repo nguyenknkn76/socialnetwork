@@ -1,17 +1,16 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-}
-.container {
+} */
+/* .container {
     display: flex;
-    justify-content: space-between;
-    width: 80%;
-}
-.user-table, .post-table {
+    width: 100%;
+} */
+/* .user-table, .post-table {
     border-collapse: collapse;
     width: 45%;
     margin-bottom: 20px;
@@ -38,4 +37,16 @@ th {
 }
 .choose-btn:hover {
     background-color: #45a049;
+} */
+
+.log-container {
+    max-height: 300px; /* Đặt chiều cao tối đa cho phần log */
+    overflow-y: auto; /* Cho phép cuộn dọc */
 }
+
+.table {
+    width: 100%;
+}
+
+/* App.css */
+
