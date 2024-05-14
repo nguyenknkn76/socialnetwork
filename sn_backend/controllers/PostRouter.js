@@ -6,16 +6,16 @@ const social = new SocialPost("RQTDH4Z-JYBMP53-KMD8M5D-ZNVQ8XN");
 
 // Define post titles and contents
 const postTitles = [
-    "Win a Trip to Space!",
-    "Ultimate Gamer Giveaway!",
+    // "Win a Trip to Space!",
+    // "Ultimate Gamer Giveaway!",
     // "Fitness Frenzy Contest!",
     // "Tech Lover's Dream!",
     // "Baker's Delight Challenge!",
     // "Fashionista's Wardrobe Update!",
     // "Pet Photo Contest!",
-    // "DIY Pro Challenge!",
-    // "Music Lover’s Giveaway!",
-    // "Bookworm Bonanza!",
+    "DIY Pro Challenge!",
+    "Music Lover’s Giveaway!",
+    "Bookworm Bonanza!",
     // "Movie Marathon Contest!",
     // "Art Enthusiast's Delight!",
     // "Gardener’s Green Thumb Challenge!",
@@ -29,16 +29,16 @@ const postTitles = [
 ];
 
 const postContents = [
-    "Enter our sweepstakes to win a trip to space! 🚀",
-    "Are you a gaming enthusiast? Enter our Ultimate Gamer Giveaway!",
+    // "Enter our sweepstakes to win a trip to space! 🚀",
+    // "Are you a gaming enthusiast? Enter our Ultimate Gamer Giveaway!",
     // "Join our Fitness Frenzy Contest and win exciting prizes!",
     // "Enter to win the latest tech gadgets in our Tech Lover's Dream contest!",
     // "Are you a baking enthusiast? Show us your skills and win!",
     // "Update your wardrobe with our Fashionista's contest!",
     // "Share a photo of your pet and win exciting prizes!",
-    // "Are you a DIY enthusiast? Enter our DIY Pro Challenge!",
-    // "Music lovers, here's your chance to win big!",
-    // "Calling all bookworms for our Bookworm Bonanza!",
+    "Are you a DIY enthusiast? Enter our DIY Pro Challenge!",
+    "Music lovers, here's your chance to win big!",
+    "Calling all bookworms for our Bookworm Bonanza!",
     // "Join our Movie Marathon Contest and win a year of free movies!",
     // "Artists, share your work and win exciting prizes!",
     // "Show off your garden in our Gardener’s Challenge!",
@@ -52,14 +52,14 @@ const postContents = [
 ];
 
 
-const getPostData = (postIndex) => {
+const getPostData = (description, title, platforms) => {
     return {
-        post: postContents[postIndex],
+        post: description,  // Assuming 'post' is expecting the description/content of the post
         shorten_links: true,
-        title: postTitles[postIndex],
-        platforms: ["twitter", "reddit", "facebook"],
+        title: title,
+        platforms: platforms,
         redditOptions: {
-            title: postTitles[postIndex],
+            title: title,
             subreddit: "test"  // Modify this as needed for your actual subreddit
         }
     };
@@ -95,8 +95,8 @@ const generateId = () => {
 const createPostObjects = (titles, contents) => {
     const combinedPosts = combinePostTitleAndContent(titles, contents);
     return combinedPosts.map(postContent => ({
-        postId: generateId(),
-        postContent
+        id: generateId(),
+        content: postContent
     }));
 };
 
@@ -104,11 +104,42 @@ const posts = createPostObjects(postTitles, postContents);
 
 postsRouter.get('/', async (req, res) => {
     res.json(posts);
-});
+})
 
+postsRouter.post('/upload', async (req, res) => {
+    const {selectedPlatforms, selectedPosts, selectedUser , apikey} = req.body
+    const results = []; // Store results of API calls
 
+    console.log(selectedPlatforms)
+    const processedPosts = selectedPosts.map(post => {
+        const [title, ...descriptionParts] = post.content.split(' - ');
+        const description = descriptionParts.join(' - '); // Re-join in case there are multiple hyphens
+        return {
+            id: post.id,
+            title: title.trim(),
+            description: description.trim()
+        };
+    });
+    // console.log(processedPosts);
 
-
-// run();
+    const run = async () => {
+        for (let i = 0; i < processedPosts.length; i++) {
+            const post = processedPosts[i];
+            const content = getPostData(post.description, post.title, selectedPlatforms);
+            // const json = await social.post(content).catch(console.error);
+            // console.log(json);
+            try {
+                const json = await social.post(content);
+                results.push({...json, status: 'success'}); // Append success status
+            } catch (error) {
+                console.error(error);
+                results.push({ error: true, message: error.message, status: 'error' }); // Append error status
+            }   
+        }
+        console.log(results)
+        res.json(results)
+    }
+    run()
+})
 
 module.exports = postsRouter

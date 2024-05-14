@@ -12,5 +12,9 @@ const getById = async (id) => {
     const res = await axios.get(`${baseUrl}/${id}`)
     return res.data
 }
+const upload = async info => {
+    const res = await axios.post(`${baseUrl}/upload`,info)
+    return res
+}
 
-export default {getAll, getById}
+export default {getAll, getById, upload}
