@@ -9,7 +9,7 @@
     "dev": "nodemon index.js",
     "lint": "eslint .",
     "build:ui": "cd ../sn_frontend && npm run build && cp -r dist ../sn_backend",
-    "deploy:full": "npm run build:ui && cd .. && git add . && git commit -m uibuild && git push origin login"
+    "deploy:full": "npm run build:ui && cd .. && git add . && git commit -m uibuild && git push origin post2"
   },
   "author": "",
   "license": "ISC",

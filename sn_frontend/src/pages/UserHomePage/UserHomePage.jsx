@@ -128,27 +128,13 @@ const UserHomePage = () => {
     };
     return(
         <div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <br/><br/>
             <div className='container mt-5'>
                 <div className='row'>
                     <div className='col-md-12'>
                         <br/><br/> 
                         <p>{user === null ? `nothing or logout` : `${user.name} logged in`}</p>
-                        <button onClick={handleLogout}>logout</button>
+                        <button onClick={handleLogout}>Logout</button>
                     </div>
                 </div> 
             </div>
@@ -177,7 +163,7 @@ const UserHomePage = () => {
                                             className={`btn ${selectedPosts.find(p => p.id === post.id) ? "btn-secondary" : "btn-primary"}`}
                                             onClick={() => handleChoosePost(post)}
                                         >
-                                            {selectedPosts.find(p => p.id === post.id) ? "Bỏ chọn" : "Chọn"}
+                                            {selectedPosts.find(p => p.id === post.id) ? "Cancel" : "Choose"}
                                         </button>
                                     </td>
                                     </tr>

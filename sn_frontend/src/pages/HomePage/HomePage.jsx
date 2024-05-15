@@ -47,10 +47,10 @@ const HomePage = () => {
     return(
         <div>
             <div>
-                <button><Link to="/login">Login</Link></button>
+                <button className="btn btn-primary"><Link to="/login">Login</Link></button>
             </div>
             <div>
-                <button><Link to="/register">Register</Link></button>
+                <button className="btn btn-primary"><Link to="/register">Register</Link></button>
             </div>
         </div>
     )
