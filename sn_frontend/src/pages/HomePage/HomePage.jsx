@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import userService from "../services/UserService";
+import userService from "../../services/UserService";
 import axios from "axios"
 // import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import LoginForm from "../components/LoginForm"
-import RegisterForm from "../components/RegisterForm";
+import LoginForm from "../../components/LoginForm"
+import RegisterForm from "../../components/RegisterForm";
 
 const HomePage = () => {
     const [username, setUsername] = useState('')
@@ -47,10 +47,10 @@ const HomePage = () => {
     return(
         <div>
             <div>
-                <button><Link to="/login">Login</Link></button>
+                <button className="btn btn-primary"><Link to="/login">Login</Link></button>
             </div>
             <div>
-                <button><Link to="/register">Register</Link></button>
+                <button className="btn btn-primary"><Link to="/register">Register</Link></button>
             </div>
         </div>
     )

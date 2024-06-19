@@ -1,6 +1,6 @@
-import RegisterForm from "../components/RegisterForm"
+import RegisterForm from "../../components/RegisterForm"
 import { useState, useEffect } from "react"
-import userService from "../services/UserService"
+import userService from "../../services/UserService"
 import 'bootstrap/dist/css/bootstrap.min.css'
 const RegisterPage = () => {
     const [newusername, setNewUsername] = useState('')
