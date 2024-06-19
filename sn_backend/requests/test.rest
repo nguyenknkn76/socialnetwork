@@ -20,6 +20,31 @@ Content-Type: application/json
     "username":"nguyen",
     "password":"123456"
 }
-
 ###
 GET http://localhost:3001/api/posts
+###
+GET http://localhost:3001/api/posts/664c3d5797bd1d60e733a213
+###
+POST http://localhost:3001/api/posts
+Content-Type: application/json
+
+{
+    "title":"third title",
+    "content" : "third content"
+}
+###
+POST http://localhost:3001/api/posts/upload
+Content-Type: application/json
+Authorization: Bearer EE3QDJT-MPAM0WA-Q8PCV90-WQRGZ37
+
+{
+    "selectedPlatforms": ["facebook"],
+    "selectedPosts": [
+        {
+            "id": "123",
+            "content": "Title for 245666 - today 2456666"
+        }
+    ],
+    "apikey": "0ANT0VV-ERJMS1N-PAVWMVJ-NG9G29Q"
+
+}
